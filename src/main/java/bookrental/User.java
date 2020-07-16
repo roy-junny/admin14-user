@@ -17,6 +17,10 @@ public class User {
     private String userName;
     private Date regTime;
     private Long rentalId;
+    private String birth;
+    private String sex;
+	private String emailAddress;
+    private String phoneNumber;
 
     public User(){
         Date date = new Date();
@@ -25,7 +29,7 @@ public class User {
     }
     @PostPersist
     public void onPostPersist(){
-        bookrental.UserRegistered userRegistered = new UserRegistered();
+        UserRegistered userRegistered = new UserRegistered();
         BeanUtils.copyProperties(this, userRegistered);
         userRegistered.publishAfterCommit();
 
@@ -59,6 +63,28 @@ public class User {
     }
     public void setRentalId(Long rentalId) {
         this.rentalId = rentalId;
+    }
+
+    public String getBirth() { return birth; }
+    public void setBirth(String birth) {
+        this.birth = birth;
+    }
+
+    public String getSex() { return sex; }
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+	public String getEmailAddress() { return emailAddress; }
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
 
